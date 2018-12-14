@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ssg</name>
+  <version>0.0.0</version>
+  <description>The ssg package</description>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>sawyer_moveit</build_depend>
+  <build_depend>intera_common</build_depend>
+  <build_depend>intera_sdk</build_depend>
+  
+  <build_export_depend>rospy</build_export_depend>
+  
+  <exec_depend>intera_sdk</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>intera_common</exec_depend>
+  <exec_depend>intera_sdk</exec_depend>
+  <exec_depend>kinect2_tracker</exec_depend>
+  <exec_depend>sawyer_moveit</exec_depend>
+  <exec_depend>sawyer_robot</exec_depend>
+  <exec_depend>sawyer_simulator</exec_depend>
+</package>

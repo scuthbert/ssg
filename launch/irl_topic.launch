@@ -1,0 +1,12 @@
+<launch>
+        <arg name="tracker_name" default="kinect" />
+        <node pkg="kinect2_tracker" type="kinect2_tracker_node" name="kinect2_tracker_node2">
+                <param name="tf_prefix" value="$(arg tracker_name)" />
+        <param name="relative_frame" value="/$(arg tracker_name)_camera_frame" />
+        </node>
+        <node pkg="tf" type="static_transform_publisher" name="kinect_to_odom"
+    args="0 0 0 1.5708 0 1.5708 /kinect_link /$(arg tracker_name)_camera_frame 50"/>
+
+        <node pkg="ssg" type="sawyer_moveit_from_topic_irl.py" name="sawyer_kinect_bridge" />
+
+</launch>
