@@ -22,11 +22,11 @@ rospy.init_node('sawyer_moveit_from_topic_irl',
 
 limb = Limb()
 
-wpt_opts = MotionWaypointOptions(max_linear_speed=0.4,
-                                    max_linear_accel=0.4,
-                                    max_rotational_speed=1.57,
-                                    max_rotational_accel=1.57,
-                                    max_joint_speed_ratio=1.0)
+wpt_opts = MotionWaypointOptions(max_linear_speed=5.0,
+                                    max_linear_accel=5.0,
+                                    max_rotational_speed=5.0,
+                                    max_rotational_accel=5.0,
+                                    max_joint_speed_ratio=3.5)
 
 
 traj_options = TrajectoryOptions()
