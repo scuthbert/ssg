@@ -158,10 +158,10 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 install(PROGRAMS
-  scripts/sawyer_moveit_from_point_irl.py
-  scripts/sawyer_moveit_from_point_sim.py
-  scripts/sawyer_moveit_from_topic_irl.py
-  scripts/sawyer_moveit_from_topic_sim.py
+  scripts/sawyer_pose_from_point_irl.py
+  scripts/sawyer_pose_from_point_sim.py
+  scripts/sawyer_kinect_irl.py
+  scripts/sawyer_kinect_sim.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
