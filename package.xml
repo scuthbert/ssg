@@ -4,6 +4,11 @@
   <version>0.0.0</version>
   <description>The ssg package</description>
 
+  <maintainer email="grant.baker@colorado.edu">Grant</maintainer>
+  <license>BSD</license>
+  
+  <author email="grant.baker@colorado.edu">Grant Baker</author>
+
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
   <build_depend>sawyer_moveit</build_depend>
