@@ -26,7 +26,7 @@ wpt_opts = MotionWaypointOptions(max_linear_speed=5.0,
                                     max_linear_accel=5.0,
                                     max_rotational_speed=5.0,
                                     max_rotational_accel=5.0,
-                                    max_joint_speed_ratio=3.5)
+                                    max_joint_speed_ratio=1.0)
 
 
 traj_options = TrajectoryOptions()
@@ -74,11 +74,22 @@ while not rospy.is_shutdown():
     try:
         (trans, rot) = listener.lookupTransform('kinect/user_1/torso', 'kinect/user_1/right_hand', rospy.Time(0))
     except  (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException) as e:
-        print 'excepted exception ' + str(type(e))
-        rate.sleep()
-        continue
+        rospy.loginfo('user_1 not found:' + str(type(e)))
+        try:
+            (trans, rot) = listener.lookupTransform('kinect/user_2/torso', 'kinect/user_2/right_hand', rospy.Time(0))
+        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException) as e:
+            rospy.loginfo('user_2 not found:' + str(type(e)))
+            try:
+                (trans, rot) = listener.lookupTransform('kinect/user_3/torso', 'kinect/user_3/right_hand', rospy.Time(0))
+            except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException) as e:
+                rospy.loginfo('user_3 not found:' + str(type(e)))
+                rospy.loginfo('Zeroing pose')
+                trans = (0,0,0)
 
-    rospy.loginfo( "setting goal state: " + str(trans))
+
+    topic = '/leapmotion/arm'
+
+    rospy.loginfo( "Setting goal state: " + str(trans))
 
     pose_goal = Pose()
     pose_goal.orientation.w = OR_W
@@ -86,7 +97,7 @@ while not rospy.is_shutdown():
     pose_goal.orientation.y = OR_Y
     pose_goal.orientation.z = OR_Z
 
-    trans = [SCALING * trans[1] + BASE_X, SCALING * trans[2] + BASE_Y, SCALING * trans[0] + BASE_Z]
+    trans = [SCALING * trans[0] + BASE_X, SCALING * trans[1] + BASE_Y, SCALING * trans[2] + BASE_Z]
 
     pose_goal.position.x = trans[0]
     pose_goal.position.y = trans[1]

@@ -162,6 +162,7 @@ install(PROGRAMS
   scripts/sawyer_pose_from_point_sim.py
   scripts/sawyer_kinect_irl.py
   scripts/sawyer_kinect_sim.py
+  scripts/sawyer_trajectory_sub_irl.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
